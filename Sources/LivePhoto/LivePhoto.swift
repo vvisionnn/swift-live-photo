@@ -3,7 +3,7 @@ import MobileCoreServices
 @preconcurrency import Photos
 import UIKit
 
-final class LivePhoto {
+public final class LivePhoto {
 	// MARK: PUBLIC
 
 	typealias LivePhotoResources = (pairedImage: URL, pairedVideo: URL)
@@ -51,8 +51,8 @@ final class LivePhoto {
 		clearCache()
 	}
 
-	init() {
-		self.cacheDirectory = {
+	public init(cacheDirectory: URL? = nil) {
+		self.cacheDirectory = cacheDirectory ?? {
 			if let cacheDirectoryURL = try? FileManager.default.url(
 				for: .cachesDirectory,
 				in: .userDomainMask,
